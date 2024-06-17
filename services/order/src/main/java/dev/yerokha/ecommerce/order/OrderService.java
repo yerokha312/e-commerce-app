@@ -7,6 +7,8 @@ import dev.yerokha.ecommerce.kafka.OrderConfirmation;
 import dev.yerokha.ecommerce.kafka.OrderProducer;
 import dev.yerokha.ecommerce.orderLine.OrderLineRequest;
 import dev.yerokha.ecommerce.orderLine.OrderLineService;
+import dev.yerokha.ecommerce.payment.PaymentClient;
+import dev.yerokha.ecommerce.payment.PaymentRequest;
 import dev.yerokha.ecommerce.product.ProductClient;
 import dev.yerokha.ecommerce.product.PurchaseRequest;
 import dev.yerokha.ecommerce.product.PurchaseResponse;
@@ -26,6 +28,7 @@ public class OrderService {
     private final OrderMapper mapper;
     private final OrderLineService orderLineService;
     private final OrderProducer orderProducer;
+    private final PaymentClient paymentClient;
 
     public Integer createOrder(OrderRequest request) {
         CustomerResponse customer = customerClient.findCustomerById(request.customerId())
@@ -47,9 +50,15 @@ public class OrderService {
             );
         }
 
-        // todo start payment process
+        PaymentRequest paymentRequest = new PaymentRequest(
+                request.amount(),
+                request.paymentMethod(),
+                order.getId(),
+                order.getReference(),
+                customer
+        );
 
-
+        paymentClient.requestOrderPayment(paymentRequest);
 
         orderProducer.sendOrderConfirmation(
                 new OrderConfirmation(

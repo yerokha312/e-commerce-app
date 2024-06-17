@@ -1,6 +1,6 @@
 package dev.yerokha.ecommerce.order;
 
-import dev.yerokha.ecommerce.orderLine.OrderLine;
+import dev.yerokha.ecommerce.orderline.OrderLine;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;

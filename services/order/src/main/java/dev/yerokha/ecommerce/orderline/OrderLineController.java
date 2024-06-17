@@ -1,4 +1,4 @@
-package dev.yerokha.ecommerce.orderLine;
+package dev.yerokha.ecommerce.orderline;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

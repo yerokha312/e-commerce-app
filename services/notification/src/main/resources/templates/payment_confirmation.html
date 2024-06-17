@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .email-container {
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            background-color: #4CAF50;
+            color: #ffffff;
+            padding: 10px;
+            border-radius: 5px 5px 0 0;
+            text-align: center;
+        }
+        .content {
+            padding: 20px;
+            color: #333333;
+        }
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            color: #888888;
+            font-size: 12px;
+        }
+        .footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        .button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="email-container">
+    <div class="header">
+        <h1>Payment Confirmation</h1>
+    </div>
+    <div class="content">
+        <p>Dear <span th:text="${customerName}">Customer Name</span>,</p>
+        <p>Thank you for your payment. We have successfully received an amount of <strong><span th:text="${amount}">Amount</span></strong>.</p>
+        <p>Your order reference is: <strong><span th:text="${orderReference}">Order Reference</span></strong>.</p>
+        <p>If you have any questions, feel free to contact our support team.</p>
+        <a href="http://example.com" class="button">Visit Our Website</a>
+    </div>
+    <div class="footer">
+        <p>Thank you for choosing our service.</p>
+        <p>© 2024 Yerbo Dev. All rights reserved.</p>
+        <p>
+            <a href="http://example.com/unsubscribe">Unsubscribe</a> |
+            <a href="http://example.com/privacy-policy">Privacy Policy</a>
+        </p>
+    </div>
+</div>
+</body>
+</html>

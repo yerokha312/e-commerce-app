@@ -1,4 +1,4 @@
-package dev.yerokha.ecommerce.orderLine;
+package dev.yerokha.ecommerce.orderline;
 
 import dev.yerokha.ecommerce.order.Order;
 import org.springframework.stereotype.Service;
